@@ -1,0 +1,36 @@
+{
+  "name": "fabs/dependency-injection",
+  "type": "library",
+  "description": "Dependency Injection for PHP",
+  "keywords": [
+    "php",
+    "di",
+    "dependency injection",
+    "dependency",
+    "injection"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ahmet Turk",
+      "email": "ahmetturk93@gmail.com",
+      "homepage": "https://github.com/fabstract"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fabs\\Component\\DependencyInjection\\": "src"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "psr/container": "^1.0",
+    "fabs/assert": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:Fabstract/Assert.git"
+    }
+  ]
+}
