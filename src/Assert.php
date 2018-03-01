@@ -9,10 +9,10 @@ class Assert extends \Fabs\Component\Assert\Assert
     /**
      * @param Definition $definition
      */
-    public static function assertDefinition($definition)
+    public static function isDefinition($definition)
     {
-        Assert::assertType($definition, Definition::class, 'definition');
-        Assert::assertNonNull($definition->getName(), 'definition.name');
+        Assert::isType($definition, Definition::class, 'definition');
+        Assert::isNotNull($definition->getName(), 'definition.name');
 
         if (
             $definition->getClassName() === null &&

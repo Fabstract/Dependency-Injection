@@ -38,7 +38,7 @@ class Definition extends ContainerAware
      */
     public function setName($name)
     {
-        Assert::assertString($name, 'name');
+        Assert::isString($name, 'name');
         $this->name = $name;
         return $this;
     }
@@ -58,7 +58,7 @@ class Definition extends ContainerAware
      */
     public function setShared($shared = true)
     {
-        Assert::assertBoolean($shared, 'shared');
+        Assert::isBoolean($shared, 'shared');
         $this->shared = $shared;
         return $this;
     }
@@ -112,7 +112,7 @@ class Definition extends ContainerAware
      */
     public function setParameters($parameters)
     {
-        Assert::assertArray($parameters, 'parameters');
+        Assert::isArray($parameters, 'parameters');
         $this->parameters = $parameters;
         return $this;
     }
@@ -131,8 +131,8 @@ class Definition extends ContainerAware
      */
     public function setClassName($class_name)
     {
-        Assert::assertString($class_name, 'class_name');
-        Assert::assertClassExists($class_name, 'class_name');
+        Assert::isString($class_name, 'class_name');
+        Assert::isClassExists($class_name, 'class_name');
         $this->class_name = $class_name;
         return $this;
     }
@@ -151,8 +151,8 @@ class Definition extends ContainerAware
      */
     public function setFactoryClassName($factory_class_name)
     {
-        Assert::assertString($factory_class_name, 'factory_class_name');
-        Assert::assertClassExists($factory_class_name, 'factory_class_name');
+        Assert::isString($factory_class_name, 'factory_class_name');
+        Assert::isClassExists($factory_class_name, 'factory_class_name');
         $this->factory_class_name = $factory_class_name;
         return $this;
     }
@@ -171,7 +171,7 @@ class Definition extends ContainerAware
      */
     public function setCreator($creator)
     {
-        Assert::assertCallable($creator, 'creator');
+        Assert::isCallable($creator, 'creator');
         $this->creator = $creator;
         return $this;
     }
@@ -211,7 +211,7 @@ class Definition extends ContainerAware
         /** @var ServiceFactoryInterface $factory */
         $factory = new $this->factory_class_name();
 
-        Assert::assertType($factory, ServiceFactoryInterface::class, 'factory');
+        Assert::isType($factory, ServiceFactoryInterface::class, 'factory');
 
         $factory_lookup[$this->factory_class_name] = $factory;
 

@@ -26,7 +26,7 @@ class Container implements ContainerInterface
      */
     public function has($name)
     {
-        Assert::assertNonNull($name, 'name');
+        Assert::isNotNull($name, 'name');
         return array_key_exists($name, $this->service_lookup);
     }
 
@@ -36,7 +36,7 @@ class Container implements ContainerInterface
      */
     public function add($definition)
     {
-        Assert::assertDefinition($definition);
+        Assert::isDefinition($definition);
 
         $this->service_lookup[$definition->getName()] = $definition;
         $definition->setContainer($this);

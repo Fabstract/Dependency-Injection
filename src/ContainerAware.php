@@ -21,7 +21,7 @@ class ContainerAware implements ContainerAwareInterface
      */
     public function setContainer($container)
     {
-        Assert::assertType($container, ContainerInterface::class, 'container');
+        Assert::isType($container, ContainerInterface::class, 'container');
         $this->container = $container;
         return $this;
     }
