@@ -159,6 +159,10 @@ class Definition extends ContainerAware
             $instance->setContainer($this->getContainer());
         }
 
+        if ($instance instanceof DefinitionAwareInterface) {
+            $instance->setDefinition($this);
+        }
+
         return $instance;
     }
 
