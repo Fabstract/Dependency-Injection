@@ -7,7 +7,7 @@ use Fabs\Component\DependencyInjection\Exception\NotFoundException;
 class Container implements ContainerInterface
 {
     /**
-     * @var Definition[]
+     * @var ServiceDefinition[]
      */
     protected $service_lookup = [];
 
@@ -31,7 +31,7 @@ class Container implements ContainerInterface
     }
 
     /**
-     * @param Definition $definition
+     * @param ServiceDefinition $definition
      * @return ContainerInterface
      */
     public function add($definition)
@@ -45,7 +45,7 @@ class Container implements ContainerInterface
 
     /**
      * @param string $name
-     * @return Definition
+     * @return ServiceDefinition
      * @throws NotFoundException
      */
     protected function getDefinition($name)

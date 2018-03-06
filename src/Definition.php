@@ -6,10 +6,6 @@ use Fabs\Component\DependencyInjection\Exception\Exception;
 
 class Definition extends ContainerAware
 {
-    /** @var string */
-    private $name = null;
-    /** @var bool */
-    private $shared = false;
     /** @var mixed */
     private $instance = null;
 
@@ -24,65 +20,16 @@ class Definition extends ContainerAware
     private $parameters = [];
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     * @throws Exception
-     */
-    public function setName($name)
-    {
-        Assert::isString($name, 'name');
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isShared()
-    {
-        return $this->shared;
-    }
-
-    /**
-     * @param bool $shared
-     * @return $this
-     * @throws Exception
-     */
-    public function setShared($shared = true)
-    {
-        Assert::isBoolean($shared, 'shared');
-        $this->shared = $shared;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getInstance()
     {
-        if ($this->isShared()) {
-            if ($this->instance !== null) {
-                return $this->instance;
-            }
+        if ($this->instance !== null) {
+            return $this->instance;
         }
 
         $instance = $this->createInstance();
-
-        if ($instance instanceof ContainerAwareInterface) {
-            $instance->setContainer($this->getContainer());
-        }
-
-        if ($this->isShared()) {
-            $this->setInstance($instance);
-        }
+        $this->setInstance($instance);
 
         return $instance;
     }
@@ -177,24 +124,42 @@ class Definition extends ContainerAware
     }
 
     /**
+     * @return string|null
+     */
+    protected function getAssertType()
+    {
+        return null;
+    }
+
+    /**
      * @return mixed|null
      */
     protected function createInstance()
     {
+        $instance = null;
         if ($this->class_name !== null) {
-            return new $this->class_name(...$this->parameters);
+            $instance = new $this->class_name(...$this->parameters);
         }
 
         if ($this->factory_class_name !== null) {
             $factory = $this->getServiceFactory();
-            return $factory->create($this->parameters);
+            $instance = $factory->create($this->parameters);
         }
 
         if ($this->creator !== null) {
-            return call_user_func_array($this->creator, $this->parameters);
+            $instance = call_user_func_array($this->creator, $this->parameters);
         }
 
-        return null;
+        $assert_type = $this->getAssertType();
+        if ($assert_type !== null) {
+            Assert::isType($instance, $assert_type, 'instance');
+        }
+
+        if ($instance instanceof ContainerAwareInterface) {
+            $instance->setContainer($this->getContainer());
+        }
+
+        return $instance;
     }
 
     /**

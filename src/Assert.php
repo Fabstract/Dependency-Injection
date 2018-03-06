@@ -7,11 +7,11 @@ use Fabs\Component\DependencyInjection\Exception\TypeConflictException;
 class Assert extends \Fabs\Component\Assert\Assert
 {
     /**
-     * @param Definition $definition
+     * @param ServiceDefinition $definition
      */
     public static function isDefinition($definition)
     {
-        Assert::isType($definition, Definition::class, 'definition');
+        Assert::isType($definition, ServiceDefinition::class, 'definition');
         Assert::isNotNull($definition->getName(), 'definition.name');
 
         if (
