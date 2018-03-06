@@ -67,15 +67,15 @@ class Container implements ContainerInterface
 
     /**
      * @param string $service_name
-     * @param string $constraint_class
+     * @param string $definition_class
      * @return $this
      */
-    public function addServiceDefinitionConstraint($service_name, $constraint_class)
+    public function addServiceDefinitionConstraint($service_name, $definition_class)
     {
         Assert::isNotNullOrWhiteSpace($service_name, 'service_name');
-        Assert::isClassExists($constraint_class, 'constraint_class');
+        Assert::isClassExists($definition_class, 'constraint_class');
 
-        $this->constraint_lookup[$service_name] = $constraint_class;
+        $this->constraint_lookup[$service_name] = $definition_class;
         return $this;
     }
 }
