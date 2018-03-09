@@ -108,7 +108,6 @@ class Definition extends ContainerAware
      */
     public function setFactoryClassName($factory_class_name)
     {
-        Assert::isString($factory_class_name, 'factory_class_name');
         Assert::isClassExists($factory_class_name, 'factory_class_name');
         $this->factory_class_name = $factory_class_name;
         return $this;
