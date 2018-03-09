@@ -140,7 +140,7 @@ class Definition extends ContainerAware
     {
         $assert_type = static::getAssertType();
         if ($assert_type !== null) {
-            Assert::isClassExists($assert_type, 'assert type');
+            Assert::isTypeExists($assert_type, 'assert type');
         }
 
         return $assert_type;
