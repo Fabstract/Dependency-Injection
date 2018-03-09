@@ -87,7 +87,7 @@ class Definition extends ContainerAware
         Assert::isTypeExists($class_name, 'class_name');
         $assert_type = $this->getAssertTypeInternal();
         if ($assert_type !== null) {
-            Assert::isChildOf($class_name, $assert_type, 'class_name');
+            Assert::isType($class_name, $assert_type, 'class_name');
         }
 
         $this->class_name = $class_name;
