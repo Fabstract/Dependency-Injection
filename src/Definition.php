@@ -40,6 +40,11 @@ class Definition extends ContainerAware
      */
     public function setInstance($instance)
     {
+        $assert_type = $this->getAssertTypeInternal();
+        if ($assert_type !== null) {
+            Assert::isType($instance, $assert_type, 'instance');
+        }
+
         $this->instance = $instance;
         return $this;
     }
@@ -80,6 +85,11 @@ class Definition extends ContainerAware
     {
         Assert::isString($class_name, 'class_name');
         Assert::isClassExists($class_name, 'class_name');
+        $assert_type = $this->getAssertTypeInternal();
+        if ($assert_type !== null) {
+            Assert::isChildOf($class_name, $assert_type, 'class_name');
+        }
+
         $this->class_name = $class_name;
         return $this;
     }
@@ -124,6 +134,19 @@ class Definition extends ContainerAware
     }
 
     /**
+     * @return null|string
+     */
+    private function getAssertTypeInternal()
+    {
+        $assert_type = static::getAssertType();
+        if ($assert_type !== null) {
+            Assert::isClassExists($assert_type, 'assert type');
+        }
+
+        return $assert_type;
+    }
+
+    /**
      * @return string|null
      */
     protected function getAssertType()
@@ -150,7 +173,7 @@ class Definition extends ContainerAware
             $instance = call_user_func_array($this->creator, $this->parameters);
         }
 
-        $assert_type = $this->getAssertType();
+        $assert_type = $this->getAssertTypeInternal();
         if ($assert_type !== null) {
             Assert::isType($instance, $assert_type, 'instance');
         }
