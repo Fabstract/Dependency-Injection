@@ -26,4 +26,10 @@ class Injectable extends ContainerAware
 
         return $this->{$name};
     }
+
+    public function __isset($name)
+    {
+        $container = $this->getContainer();
+        return $container !== null && $container->has($name);
+    }
 }
