@@ -59,7 +59,7 @@ class Container implements ContainerInterface
     protected function getDefinition($name)
     {
         if (!$this->has($name)) {
-            throw new NotFoundException();
+            throw new NotFoundException("${name} is not injected to container");
         }
 
         return $this->service_lookup[$name];
