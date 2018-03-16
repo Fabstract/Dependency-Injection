@@ -78,4 +78,19 @@ class Container implements ContainerInterface
         $this->constraint_lookup[$service_name] = $definition_class;
         return $this;
     }
+
+    /**
+     * @param string $name
+     * @return mixed
+     * @author ahmetturk <ahmetturk93@gmail.com>
+     */
+    public function __get($name)
+    {
+        if ($this->has($name)) {
+            $this->{$name} = $this->get($name);
+        }
+
+        return $this->{$name};
+    }
+
 }
