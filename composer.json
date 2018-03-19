@@ -19,7 +19,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Fabs\\Component\\DependencyInjection\\": "src"
+      "Fabstract\\Component\\DependencyInjection\\": "src"
     }
   },
   "require": {
