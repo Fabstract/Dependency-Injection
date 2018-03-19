@@ -1,6 +1,6 @@
 <?php
 
-namespace Fabs\Component\DependencyInjection\Exception;
+namespace Fabstract\Component\DependencyInjection\Exception;
 
 use Psr\Container\ContainerExceptionInterface;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Fabs\Component\DependencyInjection;
+namespace Fabstract\Component\DependencyInjection;
 
-use Fabs\Component\DependencyInjection\Exception\NotFoundException;
+use Fabstract\Component\DependencyInjection\Exception\NotFoundException;
 
 class Container implements ContainerInterface
 {

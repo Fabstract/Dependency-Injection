@@ -1,10 +1,10 @@
 <?php
 
-namespace Fabs\Component\DependencyInjection;
+namespace Fabstract\Component\DependencyInjection;
 
-use Fabs\Component\DependencyInjection\Exception\TypeConflictException;
+use Fabstract\Component\DependencyInjection\Exception\TypeConflictException;
 
-class Assert extends \Fabs\Component\Assert\Assert
+class Assert extends \Fabstract\Component\Assert\Assert
 {
     /**
      * @param ServiceDefinition $definition

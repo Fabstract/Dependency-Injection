@@ -1,8 +1,8 @@
 <?php
 
-namespace Fabs\Component\DependencyInjection;
+namespace Fabstract\Component\DependencyInjection;
 
-use Fabs\Component\DependencyInjection\Exception\Exception;
+use Fabstract\Component\DependencyInjection\Exception\Exception;
 
 class Definition extends ContainerAware
 {

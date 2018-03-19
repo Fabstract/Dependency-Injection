@@ -1,6 +1,6 @@
 <?php
 
-namespace Fabs\Component\DependencyInjection;
+namespace Fabstract\Component\DependencyInjection;
 
 abstract class ServiceFactoryBase extends Injectable implements ServiceFactoryInterface
 {
