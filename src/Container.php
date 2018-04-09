@@ -93,4 +93,20 @@ class Container implements ContainerInterface
         return $this->{$name};
     }
 
+    /**
+     * @param ServiceProviderInterface $service_provider
+     * @return $this
+     */
+    public function importFromServiceProvider($service_provider)
+    {
+        Assert::isType($service_provider, ServiceProviderInterface::class, 'service_provider');
+        $service_bag = new ServiceBag();
+        $service_provider->configureServiceBag($service_bag);
+        $processor_definition_list = $service_bag->getAll();
+
+        foreach ($processor_definition_list as $processor_definition) {
+            $this->add($processor_definition);
+        }
+        return $this;
+    }
 }
