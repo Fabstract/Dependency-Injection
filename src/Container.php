@@ -102,10 +102,10 @@ class Container implements ContainerInterface
         Assert::isType($service_provider, ServiceProviderInterface::class, 'service_provider');
         $service_bag = new ServiceBag();
         $service_provider->configureServiceBag($service_bag);
-        $processor_definition_list = $service_bag->getAll();
+        $service_definition_list = $service_bag->getAll();
 
-        foreach ($processor_definition_list as $processor_definition) {
-            $this->add($processor_definition);
+        foreach ($service_definition_list as $service_definition) {
+            $this->add($service_definition);
         }
         return $this;
     }
