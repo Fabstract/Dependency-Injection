@@ -116,7 +116,7 @@ class Container implements ContainerInterface
      * @param string $name
      * @param ServiceProviderInterface|string|callable $service_provider_or_creator
      */
-    protected function addSubContainer($name, $service_provider_or_creator)
+    public function addSubContainer($name, $service_provider_or_creator)
     {
         $sub_container_service_definition = new ServiceDefinition(true);
         $sub_container_service_definition->setName($name);
