@@ -16,6 +16,7 @@ class Container implements ContainerInterface
     /**
      * @param string $name
      * @return mixed
+     * @throws NotFoundException
      */
     public function get($name)
     {
@@ -82,6 +83,7 @@ class Container implements ContainerInterface
     /**
      * @param string $name
      * @return mixed
+     * @throws NotFoundException
      * @author ahmetturk <ahmetturk93@gmail.com>
      */
     public function __get($name)

@@ -2,8 +2,6 @@
 
 namespace Fabstract\Component\DependencyInjection;
 
-use Fabstract\Component\DependencyInjection\Exception\Exception;
-
 class ServiceDefinition extends Definition
 {
     /** @var string */
@@ -31,7 +29,6 @@ class ServiceDefinition extends Definition
     /**
      * @param bool $shared
      * @return $this
-     * @throws Exception
      */
     public function setShared($shared = true)
     {
@@ -51,7 +48,6 @@ class ServiceDefinition extends Definition
     /**
      * @param string $name
      * @return $this
-     * @throws Exception
      */
     public function setName($name)
     {

@@ -7,6 +7,7 @@ use Fabstract\Component\DependencyInjection\Exception\TypeConflictException;
 class Assert extends \Fabstract\Component\Assert\Assert
 {
     /**
+     * @noinspection PhpDocMissingThrowsInspection
      * @param ServiceDefinition $definition
      */
     public static function isDefinition($definition)
@@ -20,6 +21,7 @@ class Assert extends \Fabstract\Component\Assert\Assert
             $definition->getCreator() === null &&
             (!$definition->isShared() || $definition->getInstance() === null)
         ) {
+            /** @noinspection PhpUnhandledExceptionInspection */
             self::throwException($definition->getName(), 'a valid definition', 'not a valid definition');
         }
     }

@@ -2,8 +2,6 @@
 
 namespace Fabstract\Component\DependencyInjection;
 
-use Fabstract\Component\DependencyInjection\Exception\Exception;
-
 class Definition extends ContainerAware
 {
     /** @var mixed */
@@ -60,7 +58,6 @@ class Definition extends ContainerAware
     /**
      * @param mixed[] $parameters
      * @return $this
-     * @throws Exception
      */
     public function setParameters($parameters)
     {
