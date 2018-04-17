@@ -111,4 +111,40 @@ class Container implements ContainerInterface
 
         return $this->service_lookup[$name];
     }
+
+    /**
+     * @param string $name
+     * @param ServiceProviderInterface|string|callable $service_provider_or_creator
+     */
+    protected function addSubContainer($name, $service_provider_or_creator)
+    {
+        $sub_container_service_definition = new ServiceDefinition(true);
+        $sub_container_service_definition->setName($name);
+        $sub_container_service_definition->setCreator(function () use ($service_provider_or_creator) {
+            if ($service_provider_or_creator !== null) {
+                if (is_callable($service_provider_or_creator)) {
+                    $service_provider_or_creator = $service_provider_or_creator();
+                }
+
+                Assert::isType(
+                    $service_provider_or_creator,
+                    ServiceProviderInterface::class,
+                    'service provider'
+                );
+
+                if (is_string($service_provider_or_creator)) {
+                    /** @var ServiceProviderInterface $service_provider_or_creator */
+                    $service_provider_or_creator = new $service_provider_or_creator();
+                }
+
+                $sub_container = new SubContainer();
+                $sub_container->setContainer($this);
+                $sub_container->importFromServiceProvider($service_provider_or_creator);
+                return $sub_container;
+            }
+            return null;
+        });
+
+        $this->add($sub_container_service_definition);
+    }
 }
