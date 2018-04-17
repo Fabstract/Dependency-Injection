@@ -53,20 +53,6 @@ class Container implements ContainerInterface
     }
 
     /**
-     * @param string $name
-     * @return ServiceDefinition
-     * @throws NotFoundException
-     */
-    protected function getDefinition($name)
-    {
-        if (!$this->has($name)) {
-            throw new NotFoundException("${name} is not injected to container");
-        }
-
-        return $this->service_lookup[$name];
-    }
-
-    /**
      * @param string $service_name
      * @param string $definition_class
      * @return $this
@@ -110,5 +96,19 @@ class Container implements ContainerInterface
             $this->add($service_definition);
         }
         return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return ServiceDefinition
+     * @throws NotFoundException
+     */
+    protected function getDefinition($name)
+    {
+        if (!$this->has($name)) {
+            throw new NotFoundException("${name} is not injected to container");
+        }
+
+        return $this->service_lookup[$name];
     }
 }
