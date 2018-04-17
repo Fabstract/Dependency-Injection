@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "75e6baba93ef17a32058335b865b9be6",
+    "content-hash": "0fd34c4d2f00582d621791ac24152d0d",
     "packages": [
         {
             "name": "fabstract/assert",
-            "version": "dev-master",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fabstract/Assert.git",
-                "reference": "8e9e54e2de650c24ed86e6a4b7201f6fcb4db4b8"
+                "reference": "272e7f23e4f4b8a048faabe58523e6d199d4758c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fabstract/Assert/zipball/8e9e54e2de650c24ed86e6a4b7201f6fcb4db4b8",
-                "reference": "8e9e54e2de650c24ed86e6a4b7201f6fcb4db4b8",
+                "url": "https://api.github.com/repos/Fabstract/Assert/zipball/272e7f23e4f4b8a048faabe58523e6d199d4758c",
+                "reference": "272e7f23e4f4b8a048faabe58523e6d199d4758c",
                 "shasum": ""
             },
             "require": {
@@ -29,6 +29,7 @@
                     "Fabstract\\Component\\Assert\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -44,11 +45,7 @@
                 "assert",
                 "php"
             ],
-            "support": {
-                "source": "https://github.com/Fabstract/Assert/tree/master",
-                "issues": "https://github.com/Fabstract/Assert/issues"
-            },
-            "time": "2018-03-19T12:16:30+00:00"
+            "time": "2018-04-17T08:25:46+00:00"
         },
         {
             "name": "psr/container",
@@ -103,9 +100,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "fabstract/assert": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
