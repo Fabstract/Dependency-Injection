@@ -64,4 +64,13 @@ class ServiceDefinition extends Definition
 
         return $this->createInstance();
     }
+
+    /**
+     * @param bool $is_shared
+     * @return ServiceDefinition
+     */
+    public static function create($is_shared)
+    {
+        return new static($is_shared);
+    }
 }
