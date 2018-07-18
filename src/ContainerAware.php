@@ -2,7 +2,7 @@
 
 namespace Fabstract\Component\DependencyInjection;
 
-class ContainerAware implements ContainerAwareInterface
+abstract class ContainerAware implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 }
