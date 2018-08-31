@@ -11,11 +11,13 @@ class ServiceDefinition extends Definition
 
     /**
      * ServiceDefinition constructor.
-     * @param bool $is_shared
+     * @param string $name
      */
-    public function __construct($is_shared = false)
+    public function __construct($name = null)
     {
-        $this->setShared($is_shared);
+        if ($name !== null) {
+            $this->setName($name);
+        }
     }
 
     /**
@@ -51,7 +53,7 @@ class ServiceDefinition extends Definition
      */
     public function setName($name)
     {
-        Assert::isString($name, 'name');
+        Assert::isNotEmptyString($name, 'name');
         $this->name = $name;
         return $this;
     }
@@ -66,11 +68,11 @@ class ServiceDefinition extends Definition
     }
 
     /**
-     * @param bool $is_shared
+     * @param string $name
      * @return ServiceDefinition
      */
-    public static function create($is_shared)
+    public static function create($name = null)
     {
-        return new static($is_shared);
+        return new static($name);
     }
 }

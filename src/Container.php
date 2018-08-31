@@ -90,11 +90,17 @@ class Container implements ContainerInterface
         Assert::isType($service_provider, ServiceProviderInterface::class, 'service_provider');
         $service_bag = new ServiceBag();
         $service_provider->configureServiceBag($service_bag);
-        $service_definition_list = $service_bag->getAll();
+        $service_definition_list = $service_bag->getServiceDefinitionList();
 
         foreach ($service_definition_list as $service_definition) {
             $this->add($service_definition);
         }
+
+        $sub_container_list = $service_bag->getSubContainerList();
+        foreach ($sub_container_list as $sub_container_name => $service_provider_or_creator) {
+            $this->addSubContainer($sub_container_name, $service_provider_or_creator);
+        }
+
         return $this;
     }
 
@@ -118,8 +124,9 @@ class Container implements ContainerInterface
      */
     public function addSubContainer($name, $service_provider_or_creator)
     {
-        $sub_container_service_definition = new ServiceDefinition(true);
+        $sub_container_service_definition = new ServiceDefinition();
         $sub_container_service_definition->setName($name);
+        $sub_container_service_definition->setShared(true);
         $sub_container_service_definition->setCreator(function () use ($service_provider_or_creator) {
             if ($service_provider_or_creator !== null) {
                 if (is_callable($service_provider_or_creator)) {
